@@ -2,21 +2,112 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>abbierobinsons | Portfolio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>abbierobinson | Astrobiology</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        body { background: #0d1117; color: #00ff41; font-family: monospace; padding: 2rem; }
-        .cmd { color: #888; }
-        h1 { font-size: 1.2rem; }
+        @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;500&display=swap');
+        
+        body {
+            background-color: #050505;
+            color: #00ff41;
+            font-family: 'Fira Code', monospace;
+            scroll-behavior: smooth;
+        }
+
+        /* Custom scrollbar for terminal feel */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #050505; }
+        ::-webkit-scrollbar-thumb { background: #222; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #00ff41; }
+
+        .terminal-window {
+            border: 1px solid #333;
+            box-shadow: 0 0 20px rgba(0, 255, 65, 0.1);
+        }
+
+        .cursor {
+            display: inline-block;
+            width: 10px;
+            height: 1.2em;
+            background: #00ff41;
+            margin-left: 5px;
+            animation: blink 1s infinite;
+            vertical-align: middle;
+        }
+
+        @keyframes blink { 50% { opacity: 0; } }
+        
+        .section-padding { padding-top: 80px; padding-bottom: 80px; }
     </style>
 </head>
-<body>
-    <p class="cmd">abbie@research:~$ whoami</p>
-    <h1>Astrobiology PhD Student | Geant4 & C++</h1>
-    <hr style="border: 0.5px solid #333">
-    <p class="cmd">abbie@research:~$ ./list_projects.sh</p>
-    <ul>
-        <li>Mars Simulation (Geant4/C++)</li>
-        <li>Radiation Modeling</li>
-    </ul>
+<body class="selection:bg-green-500/30">
+
+    <nav class="fixed top-0 w-full bg-[#050505]/80 backdrop-blur-md border-b border-white/10 z-50 p-4">
+        <div class="max-w-4xl mx-auto flex justify-between items-center text-xs sm:text-sm">
+            <span class="font-bold">abbie@astrobiology:~</span>
+            <div class="space-x-4">
+                <a href="#about" class="hover:text-white transition-colors">[ABOUT]</a>
+                <a href="#projects" class="hover:text-white transition-colors">[PROJECTS]</a>
+                <a href="#contact" class="hover:text-white transition-colors">[CONTACT]</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-4xl mx-auto px-6">
+        
+        <section id="about" class="min-h-screen flex flex-col justify-center section-padding">
+            <p class="text-white/50 mb-2">/usr/bin/whoami</p>
+            <h1 class="text-3xl sm:text-5xl font-bold mb-4">Abbie Robinson</h1>
+            <p class="text-lg sm:text-xl text-green-400 opacity-90 leading-relaxed mb-6">
+                PhD Student in Astrobiology. Using <span class="text-white">C++</span> and <span class="text-white">Geant4</span> to simulate the limits of life on Mars.
+            </p>
+            <div class="text-sm opacity-50">
+                Current Status: 2nd Year Researching radiation modeling...<span class="cursor"></span>
+            </div>
+        </section>
+
+        <section id="projects" class="min-h-screen section-padding">
+            <p class="text-white/50 mb-8">ls -la ./research_projects</p>
+            
+            <div class="grid gap-6">
+                <div class="terminal-window p-6 rounded-lg bg-black/40 hover:border-green-500/50 transition-all group">
+                    <div class="flex justify-between items-start mb-4">
+                        <h3 class="text-xl font-bold group-hover:text-white">Mars Radiation Sim</h3>
+                        <span class="text-xs bg-green-900/30 px-2 py-1 rounded text-green-300">C++ / Geant4</span>
+                    </div>
+                    <p class="text-sm text-gray-400 mb-4">
+                        A Monte Carlo simulation tool developed to analyze secondary particle production in Martian regolith.
+                    </p>
+                    <a href="#" class="text-xs text-green-500 underline underline-offset-4 hover:text-white">VIEW_SOURCE.CPP</a>
+                </div>
+
+                <div class="terminal-window p-6 rounded-lg bg-black/40 hover:border-green-500/50 transition-all group">
+                    <div class="flex justify-between items-start mb-4">
+                        <h3 class="text-xl font-bold group-hover:text-white">Astro-Data Toolkit</h3>
+                        <span class="text-xs bg-green-900/30 px-2 py-1 rounded text-green-300">Python / Conda</span>
+                    </div>
+                    <p class="text-sm text-gray-400 mb-4">
+                        Automated pipeline for processing spectral data from planetary analogs.
+                    </p>
+                    <a href="#" class="text-xs text-green-500 underline underline-offset-4 hover:text-white">GIT_CLONE</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="min-h-[50vh] section-padding">
+            <p class="text-white/50 mb-4">./contact_me.sh</p>
+            <div class="space-y-2">
+                <p>EMAIL: <a href="mailto:your@email.com" class="hover:text-white underline">abbie.robinson@university.edu</a></p>
+                <p>GITHUB: <a href="https://github.com/abbierobinson0205-mars" class="hover:text-white underline">abbierobinson0205-mars</a></p>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="p-10 text-center text-[10px] opacity-30">
+        © 2026 - BUILT WITH VIM & GIT
+    </footer>
+
 </body>
 </html>
