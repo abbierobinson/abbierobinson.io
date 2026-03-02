@@ -32,10 +32,9 @@
         .mono { font-family: 'JetBrains Mono', monospace; }
 
         .nav-pill {
-            background: rgba(255, 255, 255, 0.6);
+            background: rgba(255, 255, 255, 0.7);
             backdrop-filter: blur(12px);
             border: 1px solid rgba(255, 255, 255, 0.4);
-            box-shadow: 0 4px 20px rgba(180, 150, 200, 0.1);
         }
 
         .hero-title {
@@ -46,17 +45,17 @@
             display: inline-block;
         }
 
-        /* Twinkling Star Decorators */
+        /* Twinkling Star Decorators around name */
         .decoration-star {
             position: absolute;
             fill: var(--pastel-yellow);
-            animation: twinkle 2s infinite ease-in-out;
+            animation: sparkle 2.5s infinite ease-in-out;
             filter: drop-shadow(0 0 5px rgba(253, 253, 150, 0.8));
         }
 
-        @keyframes twinkle {
-            0%, 100% { transform: scale(1) rotate(0deg); opacity: 0.8; }
-            50% { transform: scale(1.3) rotate(15deg); opacity: 1; }
+        @keyframes sparkle {
+            0%, 100% { transform: scale(1) rotate(0deg); opacity: 0.6; }
+            50% { transform: scale(1.4) rotate(20deg); opacity: 1; }
         }
 
         .research-card {
@@ -89,9 +88,9 @@
 
     <nav class="fixed top-6 w-full z-50 flex justify-center">
         <div class="nav-pill px-10 py-4 rounded-full flex gap-10 text-xs font-bold tracking-widest uppercase">
-            <a href="#about" class="hover:text-pink-400">01_ID</a>
-            <a href="#projects" class="hover:text-pink-400">02_LAB</a>
-            <a href="#contact" class="hover:text-pink-400">03_COMMS</a>
+            <a href="#about" class="hover:text-pink-400 transition-colors">01_ID</a>
+            <a href="#projects" class="hover:text-pink-400 transition-colors">02_LAB</a>
+            <a href="#contact" class="hover:text-pink-400 transition-colors">03_COMMS</a>
         </div>
     </nav>
 
@@ -100,15 +99,15 @@
         <section id="about" class="min-h-screen flex flex-col justify-center">
             <div class="mono text-pink-400 font-bold mb-4 tracking-tighter">// ASTROBIOLOGY_PHD_PHASE_02</div>
             
-            <div class="relative inline-block">
-                <svg class="decoration-star w-6 h-6 -top-8 -left-6" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                <svg class="decoration-star w-4 h-4 -top-4 right-0" style="animation-delay: 0.5s" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                <svg class="decoration-star w-5 h-5 -bottom-6 left-20" style="animation-delay: 1.2s" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+            <div class="relative inline-block w-fit">
+                <svg class="decoration-star w-8 h-8 -top-10 -left-8" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                <svg class="decoration-star w-5 h-5 -top-6 -right-6" style="animation-delay: 0.8s" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                <svg class="decoration-star w-6 h-6 -bottom-8 left-1/2" style="animation-delay: 1.5s" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
 
                 <h1 class="text-7xl sm:text-9xl font-bold hero-title">Abbie Robinson</h1>
             </div>
 
-            <p class="text-2xl sm:text-3xl font-light leading-tight mt-8 max-w-2xl">
+            <p class="text-2xl sm:text-3xl font-light leading-tight mt-12 max-w-2xl">
                 Simulating <span class="italic text-pink-400">Martian radiation</span> through C++ architecture. High-performance physics for the future of life.
             </p>
         </section>
@@ -143,7 +142,7 @@
     </main>
 
     <footer class="py-12 text-center mono text-[10px] opacity-40 tracking-widest uppercase">
-        Built with Spite & Science
+        Searching for life among the stars
     </footer>
 
     <script>
@@ -155,29 +154,34 @@
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
             stars = [];
-            for (let i = 0; i < 150; i++) {
+            // Increased to 400 stars for a full sky
+            for (let i = 0; i < 400; i++) {
                 stars.push({
                     x: Math.random() * canvas.width,
                     y: Math.random() * canvas.height,
-                    size: Math.random() * 2,
+                    size: Math.random() * 2.5,
+                    // Slower, smoother twinkle
                     opacity: Math.random(),
-                    speed: Math.random() * 0.05
+                    change: Math.random() * 0.01 + 0.005 
                 });
             }
         }
 
         function draw() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-            // Soft Yellow Stars
             ctx.fillStyle = "#fdfd96"; 
+            
             stars.forEach(s => {
                 ctx.globalAlpha = s.opacity;
                 ctx.beginPath();
                 ctx.arc(s.x, s.y, s.size, 0, Math.PI * 2);
                 ctx.fill();
-                s.opacity += Math.random() * 0.02 - 0.01;
-                if(s.opacity < 0) s.opacity = 0;
-                if(s.opacity > 1) s.opacity = 1;
+                
+                // Twinkle logic
+                s.opacity += s.change;
+                if (s.opacity > 1 || s.opacity < 0.1) {
+                    s.change *= -1;
+                }
             });
             requestAnimationFrame(draw);
         }
