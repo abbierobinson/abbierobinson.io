@@ -6,40 +6,46 @@
     <title>abbierobinson | Astrobiology</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;500&display=swap');
-        
-        body {
-            background-color: #050505;
-            color: #00ff41;
-            font-family: 'Fira Code', monospace;
-            scroll-behavior: smooth;
-        }
+    @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;500&display=swap');
+    
+    body {
+        /* Deep dark berry background instead of pure black */
+        background-color: #1a0a1a; 
+        /* Hot Pink text */
+        color: #ff69b4; 
+        font-family: 'Fira Code', monospace;
+        scroll-behavior: smooth;
+    }
 
-        /* Custom scrollbar for terminal feel */
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #050505; }
-        ::-webkit-scrollbar-thumb { background: #222; border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: #00ff41; }
+    /* Custom scrollbar in pink */
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #1a0a1a; }
+    ::-webkit-scrollbar-thumb { background: #ff1493; border-radius: 10px; }
 
-        .terminal-window {
-            border: 1px solid #333;
-            box-shadow: 0 0 20px rgba(0, 255, 65, 0.1);
-        }
+    .terminal-window {
+        border: 2px solid #ff1493;
+        background: rgba(255, 20, 147, 0.05);
+        box-shadow: 0 0 15px rgba(255, 20, 147, 0.2);
+    }
 
-        .cursor {
-            display: inline-block;
-            width: 10px;
-            height: 1.2em;
-            background: #00ff41;
-            margin-left: 5px;
-            animation: blink 1s infinite;
-            vertical-align: middle;
-        }
+    .cursor {
+        display: inline-block;
+        width: 10px;
+        height: 1.2em;
+        background: #ff1493;
+        margin-left: 5px;
+        animation: blink 1s infinite;
+    }
 
-        @keyframes blink { 50% { opacity: 0; } }
-        
-        .section-padding { padding-top: 80px; padding-bottom: 80px; }
-    </style>
+    /* Gradient text for your name */
+    .title-gradient {
+        background: linear-gradient(to right, #ff69b4, #da70d6, #ffffff);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    @keyframes blink { 50% { opacity: 0; } }
+</style>
 </head>
 <body class="selection:bg-green-500/30">
 
